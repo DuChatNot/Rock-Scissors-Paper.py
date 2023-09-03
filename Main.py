@@ -1,5 +1,6 @@
 # Piedra Papel Tijera
 import random #importación de modulo de aleatoriedad
+
 round_selection = int(input('Cuantos Rounds? '))
 rounds = 0
 
@@ -50,10 +51,12 @@ while rounds < round_selection:
             comp_w +=1
     else:
         print('Invalid User Input')
-        break
+        continue
 
 if rounds == round_selection:
     if user_w > comp_w:
         print('Victoria de User')
-    else:
+    elif user_w < comp_w:
         print('Victoria CPU')
+    else:
+        print('EMPATE')
