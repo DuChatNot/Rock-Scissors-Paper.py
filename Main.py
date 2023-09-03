@@ -1,8 +1,9 @@
 # Piedra Papel Tijera
 import random #importación de modulo de aleatoriedad
+round_selection = int(input('Cuantos Rounds? '))
 rounds = 0
 
-while rounds < 3:
+while rounds < round_selection:
     selection = ('piedra','papel','tijera')
 
     user = input('Piedra, Papel o Tijera? => ')
@@ -11,6 +12,9 @@ while rounds < 3:
     user = user.lower()
     comp = comp.lower()
 
+    user_w = 0
+    comp_w = 0
+
     if user == 'piedra' or user == 'papel' or user == 'tijera':
         print('-- -- -- -- --')
         print('User Selection => ', user)
@@ -18,25 +22,38 @@ while rounds < 3:
         rounds += 1
         print('-- -- -- -- --')
 
+    print(f"Round {rounds}/{round_selection}")
     if user == comp:
-        print('Empate')
+        print('========================> Empate')
     elif user == 'piedra':
         if comp == 'tijera':
-            print('User gana')
+            print('========================> User gana')
+            user_w += 1
         else:
-            print('CPU gana')
+            print('========================> CPU gana')
+            comp_w +=1
 
     elif user == 'papel':
         if comp == 'piedra':
-            print('User gana')
+            print('========================> User gana')
+            user_w += 1
         else:
-            print('CPU gana')
+            print('========================> CPU gana')
+            comp_w +=1
 
     elif user == 'tijera':
         if comp == 'papel':
-            print('User gana')
+            print('========================> User gana')
+            user_w += 1
         else:
-            print('CPU gana')
+            print('========================> CPU gana')
+            comp_w +=1
     else:
         print('Invalid User Input')
         break
+
+if rounds == round_selection:
+    if user_w > comp_w:
+        print('Victoria de User')
+    else:
+        print('Victoria CPU')
